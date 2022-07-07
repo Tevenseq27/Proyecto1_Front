@@ -1,0 +1,62 @@
+﻿@model Presentacion.Models.ReservaModel
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar Reserva</h1>
+
+<h3>¿Seguro desea eliminar este registro?</h3>
+<div>
+    <h4>ReservaModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fechaEntrada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fechaEntrada)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fechaSalida)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fechaSalida)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cantAdultos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cantAdultos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cantNinos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cantNinos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cantHabitaciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cantHabitaciones)
+        </dd>
+    </dl>
+    
+    <form asp-action="Eliminar" asp-controller="Reserva" method="post">
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

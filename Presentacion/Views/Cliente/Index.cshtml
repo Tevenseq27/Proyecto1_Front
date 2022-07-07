@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Presentacion.Models.ClienteModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CrearCliente" asp-controller="Cliente">Crear nuevo cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido1Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido2Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefonoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoCliente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido1Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido2Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoCliente)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "EditaCliente", "Cliente", new { item.CedulaCliente }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Cliente", new { item.CedulaCliente }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

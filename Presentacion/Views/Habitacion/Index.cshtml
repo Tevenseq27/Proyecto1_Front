@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Presentacion.Models.HabitacionModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CrearHabitacion" asp-controller="Habitacion">Crear nueva habitación</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CapacidadHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoHabitacion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CapacidadHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoHabitacion)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "EditaHabitacion", "Habitacion", new { item.CodHabitacion }, new { @class = "btn btn-primary"}) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Habitacion", new { item.CodHabitacion }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

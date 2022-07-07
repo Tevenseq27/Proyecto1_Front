@@ -1,0 +1,48 @@
+﻿@model Presentacion.Models.HabitacionModel
+
+@{
+    ViewData["Title"] = "CrearHabitacion";
+}
+
+<h1>Crear Habitacion</h1>
+
+<h4>Ingrese los datos:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Guardar" asp-controller="Habitacion" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodHabitacion" class="control-label"></label>
+                <input asp-for="CodHabitacion" class="form-control" />
+                <span asp-validation-for="CodHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoHabitacion" class="control-label"></label>
+                <input asp-for="TipoHabitacion" class="form-control" />
+                <span asp-validation-for="TipoHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CapacidadHabitacion" class="control-label"></label>
+                <input asp-for="CapacidadHabitacion" class="form-control" />
+                <span asp-validation-for="CapacidadHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoHabitacion" class="control-label"></label>
+                <input asp-for="EstadoHabitacion" class="form-control" />
+                <span asp-validation-for="EstadoHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

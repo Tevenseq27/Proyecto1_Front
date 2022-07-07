@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Presentacion.Models.ReservaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CrearReserva" asp-controller="Reserva">Crear nueva reserva</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantAdultos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantNinos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantHabitaciones)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantAdultos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantNinos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantHabitaciones)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "EditaReserva", "Reserva", new { item.ID }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Reserva", new { item.ID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
