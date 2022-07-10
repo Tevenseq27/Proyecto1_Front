@@ -13,34 +13,49 @@
         <form asp-action="Guardar" asp-controller="Reserva" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Codigo" class="control-label"></label>
-                <input asp-for="Codigo" class="form-control" />
-                <span asp-validation-for="Codigo" class="text-danger"></span>
+                <label asp-for="IdReserva" class="control-label"></label>
+                <input asp-for="IdReserva" class="form-control" />
+                <span asp-validation-for="IdReserva" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaEntrada" class="control-label"></label>
-                <input asp-for="fechaEntrada" class="form-control" />
-                <span asp-validation-for="fechaEntrada" class="text-danger"></span>
+                <label asp-for="CodReserva" class="control-label"></label>
+                <input asp-for="CodReserva" class="form-control" />
+                <span asp-validation-for="CodReserva" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaSalida" class="control-label"></label>
-                <input asp-for="fechaSalida" class="form-control" />
-                <span asp-validation-for="fechaSalida" class="text-danger"></span>
+                <label asp-for="FechaEntrada" class="control-label"></label>
+                <input asp-for="FechaEntrada" class="form-control" />
+                <span asp-validation-for="FechaEntrada" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cantAdultos" class="control-label"></label>
-                <input asp-for="cantAdultos" class="form-control" />
-                <span asp-validation-for="cantAdultos" class="text-danger"></span>
+                <label asp-for="FechaSalida" class="control-label"></label>
+                <input asp-for="FechaSalida" class="form-control" />
+                <span asp-validation-for="FechaSalida" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cantNinos" class="control-label"></label>
-                <input asp-for="cantNinos" class="form-control" />
-                <span asp-validation-for="cantNinos" class="text-danger"></span>
+                <label asp-for="CantidadAdultos" class="control-label"></label>
+                <input asp-for="CantidadAdultos" class="form-control" />
+                <span asp-validation-for="CantidadAdultos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cantHabitaciones" class="control-label"></label>
-                <input asp-for="cantHabitaciones" class="form-control" />
-                <span asp-validation-for="cantHabitaciones" class="text-danger"></span>
+                <label asp-for="CantidadNinos" class="control-label"></label>
+                <input asp-for="CantidadNinos" class="form-control" />
+                <span asp-validation-for="CantidadNinos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CedulaCliente" class="control-label"></label>
+                <input asp-for="CedulaCliente" class="form-control" />
+                <span asp-validation-for="CedulaCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodHabitacion" class="control-label"></label>
+                <input asp-for="CodHabitacion" class="form-control" />
+                <span asp-validation-for="CodHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecioHabitacion" class="control-label"></label>
+                <input asp-for="PrecioHabitacion" class="form-control" />
+                <span asp-validation-for="PrecioHabitacion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />

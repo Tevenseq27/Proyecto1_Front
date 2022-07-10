@@ -9,6 +9,16 @@ namespace Presentacion.Controllers
 {
     public class ReservaController : Controller
     {
+
+
+        //--------LISTAR RESERVA--------
+        public async Task<IActionResult> Index()
+        {
+            GestorConexiones objconexion = new GestorConexiones();
+            List<ReservaModel> lstresultados = await objconexion.ListarReserva(new ReservaModel {IdReserva = short.MinValue});
+            return View(lstresultados);
+        }
+
         public IActionResult CrearReserva()
         {
             return View();
@@ -17,10 +27,9 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> EditaReserva(int Id)
         {
             string id = ModelState.Values.Last().RawValue.ToString();
-
             GestorConexiones objconexion = new GestorConexiones();
-            List<ReservaModel> lstresultados = await objconexion.ListarReserva();
-            ReservaModel reserva = lstresultados.Find(x => x.ID.Equals(id));
+            List<ReservaModel> lstresultados = await objconexion.ListarReserva(new ReservaModel {IdReserva = short.MinValue });
+            ReservaModel reserva = lstresultados.Find(x => x.IdReserva.Equals(id));
 
             return View(reserva);
         }
@@ -30,8 +39,8 @@ namespace Presentacion.Controllers
             string id = ModelState.Values.Last().RawValue.ToString();
 
             GestorConexiones objconexion = new GestorConexiones();
-            List<ReservaModel> lstresultados = await objconexion.ListarReserva();
-            ReservaModel reserva = lstresultados.Find(x => x.ID.Equals(id));
+            List<ReservaModel> lstresultados = await objconexion.ListarReserva(new ReservaModel {IdReserva = short.MinValue });
+            ReservaModel reserva = lstresultados.Find(x => x.IdReserva.Equals(id));
 
             return View(reserva);
         }
@@ -60,12 +69,5 @@ namespace Presentacion.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Index()
-        {
-            GestorConexiones objconexion = new GestorConexiones();
-            List<ReservaModel> lstresultados = await objconexion.ListarReserva();
-
-            return View(lstresultados);
-        }
     }
 }

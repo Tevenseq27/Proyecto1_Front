@@ -49,6 +49,7 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<IActionResult> Guardar(HabitacionModel P_Modelo)
         {
+
             GestorConexiones objconexion = new GestorConexiones();
             await objconexion.AgregarHabitacion(P_Modelo);
             return RedirectToAction("Index");
@@ -69,7 +70,5 @@ namespace Presentacion.Controllers
             await objconexion.EliminarHabitacion(P_Modelo);
             return RedirectToAction("Index");
         }
-
-
     }
 }

@@ -85,7 +85,6 @@ namespace Presentacion.Controllers
               var convertirAstring = await resultado.Content.ReadAsStringAsync();
               lstresultados = JsonConvert.DeserializeObject<List<HabitacionModel>>(convertirAstring);
             }
-
             return lstresultados;
         }
 
@@ -117,39 +116,39 @@ namespace Presentacion.Controllers
         }
         #endregion
         #region Reserva
-        public async Task<List<ReservaModel>> ListarReserva()
-        {
+        //MÉTODO PARA LISTAR RESERVA EN DB
+        public async Task<List<ReservaModel>> ListarReserva(ReservaModel P_Entidad)
+        {          
             List<ReservaModel> lstresultados = new List<ReservaModel>();
-
-            string url = "api/Reserva/Consultar";
+            GestorDeConexiones();
+            string url = "api/Seguridad/ConsultarReserva";
             HttpResponseMessage resultado = await Cliente.GetAsync(url);
 
             if (resultado.IsSuccessStatusCode)
             {
-                var jsonSTRING = await resultado.Content.ReadAsStringAsync();
-                lstresultados = JsonConvert.DeserializeObject<List<ReservaModel>>(jsonSTRING);
+                var convertirAstring = await resultado.Content.ReadAsStringAsync();
+                lstresultados = JsonConvert.DeserializeObject<List<ReservaModel>>(convertirAstring);
             }
-
             return lstresultados;
         }
 
         public async Task<bool> AgregarReserva(ReservaModel P_Modelo)
         {
-            string url = "api/Reserva/Agregar";
+            string url = "api/Seguridad/AgregarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
         }
 
         public async Task<bool> EliminarReserva(ReservaModel P_Modelo)
         {
-            string url = "api/Reserva/Eliminar";
+            string url = "api/Seguridad/EliminarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
         }
 
         public async Task<bool> ModificarReserva(ReservaModel P_Modelo)
         {
-            string url = "api/Reserva/Modificar";
+            string url = "api/Seguridad/ModificarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
         }

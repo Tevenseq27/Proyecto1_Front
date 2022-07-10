@@ -13,25 +13,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ID)
+                @Html.DisplayNameFor(model => model.IdReserva)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Codigo)
+                @Html.DisplayNameFor(model => model.CodReserva)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fechaEntrada)
+                @Html.DisplayNameFor(model => model.FechaEntrada)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fechaSalida)
+                @Html.DisplayNameFor(model => model.FechaSalida)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cantAdultos)
+                @Html.DisplayNameFor(model => model.CantidadAdultos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cantNinos)
+                @Html.DisplayNameFor(model => model.CantidadNinos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cantHabitaciones)
+                @Html.DisplayNameFor(model => model.CedulaCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioHabitacion)
             </th>
             <th></th>
         </tr>
@@ -40,29 +46,35 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ID)
+                @Html.DisplayFor(modelItem => item.IdReserva)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
+                @Html.DisplayFor(modelItem => item.CodReserva)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaEntrada)
+                @Html.DisplayFor(modelItem => item.FechaEntrada)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaSalida)
+                @Html.DisplayFor(modelItem => item.FechaSalida)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cantAdultos)
+                @Html.DisplayFor(modelItem => item.CantidadAdultos)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cantNinos)
+                @Html.DisplayFor(modelItem => item.CantidadNinos)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cantHabitaciones)
+                @Html.DisplayFor(modelItem => item.CedulaCliente)
             </td>
             <td>
-                @Html.ActionLink("Modificar", "EditaReserva", "Reserva", new { item.ID }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Eliminar", "Eliminar", "Reserva", new { item.ID }, new { @class = "btn btn-danger" })
+                @Html.DisplayFor(modelItem => item.CodHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioHabitacion)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "EditaReserva", "Reserva", new { item.IdReserva }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Reserva", new { item.IdReserva }, new { @class = "btn btn-danger" })
             </td>
         </tr>
 }

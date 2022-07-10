@@ -11,48 +11,61 @@
     <h4>ReservaModel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ID)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdReserva)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ID)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdReserva)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Codigo)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CodReserva)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Codigo)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CodReserva)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.fechaEntrada)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEntrada)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.fechaEntrada)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaEntrada)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.fechaSalida)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaSalida)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.fechaSalida)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaSalida)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cantAdultos)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadAdultos)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cantAdultos)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CantidadAdultos)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cantNinos)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadNinos)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cantNinos)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CantidadNinos)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cantHabitaciones)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CedulaCliente)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cantHabitaciones)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CedulaCliente)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CodHabitacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CodHabitacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioHabitacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PrecioHabitacion)
+        </dd>
+
     </dl>
     
     <form asp-action="Eliminar" asp-controller="Reserva" method="post">

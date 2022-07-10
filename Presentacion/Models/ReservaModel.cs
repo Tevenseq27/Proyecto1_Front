@@ -8,13 +8,15 @@ namespace Presentacion.Models
     public class ReservaModel
     {
         #region Propiedades
-        public string ID { get; set; }
-        public string Codigo { get; set; }
-        public DateTime fechaEntrada { get; set; }
-        public DateTime fechaSalida { get; set; }
-        public int cantAdultos { get; set; }
-        public int cantNinos { get; set; }
-        public int cantHabitaciones { get; set; }
+        public short IdReserva { get; set; }
+        public string CodReserva { get; set; }
+        public DateTime FechaEntrada { get; set; }
+        public DateTime FechaSalida { get; set; }
+        public short CantidadAdultos { get; set; }
+        public short CantidadNinos { get; set; }
+        public string CedulaCliente { get; set; }
+        public short CodHabitacion { get; set; }
+        public decimal PrecioHabitacion { get; set; }
 
         #endregion
 
@@ -22,13 +24,15 @@ namespace Presentacion.Models
 
         public ReservaModel()
         {
-            ID = string.Empty;
-            Codigo = string.Empty;
-            fechaEntrada = DateTime.MinValue;
-            fechaSalida = DateTime.MinValue;
-            cantAdultos = 0;
-            cantNinos = 0;
-            cantHabitaciones = 0;
+            IdReserva = short.MinValue;
+            CodReserva = string.Empty;
+            FechaEntrada = DateTime.MinValue;
+            FechaSalida = DateTime.MinValue;
+            CantidadAdultos = 0;
+            CantidadNinos = 0;
+            CedulaCliente = string.Empty;
+            CodHabitacion = 0;
+            PrecioHabitacion = 0;
         }
         #endregion
     }
