@@ -134,6 +134,7 @@ namespace Presentacion.Controllers
 
         public async Task<bool> AgregarReserva(ReservaModel P_Modelo)
         {
+            GestorDeConexiones();
             string url = "api/Seguridad/AgregarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
