@@ -24,9 +24,10 @@ namespace Presentacion.Controllers
         }
 
         //--------MODIFICAR--------
-        public async Task<IActionResult> EditaHabitacion(int Id)
+        public async Task<IActionResult> EditaHabitacion(HabitacionModel ObjHabitacion)
         {
-            string id = ModelState.Values.Last().RawValue.ToString();
+            short id = ObjHabitacion.CodHabitacion;
+
             GestorConexiones objconexion = new GestorConexiones();
             List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion(new HabitacionModel { CodHabitacion = short.MinValue });
             HabitacionModel habitacion = lstresultados.Find(x => x.CodHabitacion.Equals(id));
@@ -35,9 +36,9 @@ namespace Presentacion.Controllers
         }
 
         //--------ELIMINAR--------
-        public async Task<IActionResult> Eliminar(int Id)
+        public async Task<IActionResult> Eliminar(HabitacionModel ObjHabitacion)
         {
-            string id = ModelState.Values.Last().RawValue.ToString();
+            short id = ObjHabitacion.CodHabitacion;
 
             GestorConexiones objconexion = new GestorConexiones();
             List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion(new HabitacionModel { CodHabitacion = short.MinValue });
@@ -64,7 +65,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Eliminar(HabitacionModel P_Modelo)
+        public async Task<IActionResult> EliminarHabitacion(HabitacionModel P_Modelo)
         {
             GestorConexiones objconexion = new GestorConexiones();
             await objconexion.EliminarHabitacion(P_Modelo);

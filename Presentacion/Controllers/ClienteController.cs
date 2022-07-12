@@ -11,7 +11,8 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> Index()
         {
             GestorConexiones objconexion = new GestorConexiones();
-            List<ClienteModel> lstresultados = await objconexion.ListarCliente(new ClienteModel { CedulaCliente = string.Empty });
+            List<ClienteModel> lstresultados = await objconexion.ListarCliente();
+
             return View(lstresultados);
         }
 
@@ -20,23 +21,23 @@ namespace Presentacion.Controllers
             return View();
         }
 
-        public async Task<IActionResult> EditaCliente(int Id)
+        public async Task<IActionResult> EditaCliente(ClienteModel ObjCliente)
         {
-            string id = ModelState.Values.Last().RawValue.ToString();
+            string id = ObjCliente.CedulaCliente;
 
             GestorConexiones objconexion = new GestorConexiones();
-            List<ClienteModel> lstresultados = await objconexion.ListarCliente(new ClienteModel { CedulaCliente = string.Empty });
+            List<ClienteModel> lstresultados = await objconexion.ListarCliente();
             ClienteModel cliente = lstresultados.Find(x => x.CedulaCliente.Equals(id));
 
             return View(cliente);
         }
 
-        public async Task<IActionResult> Eliminar(int Id)
+        
+        public async Task<IActionResult> Eliminar(ClienteModel ObjCliente)
         {
-            string id = ModelState.Values.Last().RawValue.ToString();
-
+            string id = ObjCliente.CedulaCliente;
             GestorConexiones objconexion = new GestorConexiones();
-            List<ClienteModel> lstresultados = await objconexion.ListarCliente(new ClienteModel { CedulaCliente = string.Empty });
+            List<ClienteModel> lstresultados = await objconexion.ListarCliente();
             ClienteModel cliente = lstresultados.Find(x => x.CedulaCliente.Equals(id));
 
             return View(cliente);
@@ -59,7 +60,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Eliminar(ClienteModel P_Modelo)
+        public async Task<IActionResult> EliminarCliente(ClienteModel P_Modelo)
         {
             GestorConexiones objconexion = new GestorConexiones();
             await objconexion.EliminarCliente(P_Modelo);

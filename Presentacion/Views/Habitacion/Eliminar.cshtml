@@ -10,35 +10,34 @@
 <div>
     <h4>HabitacionModel</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodHabitacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodHabitacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoHabitacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoHabitacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CapacidadHabitacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CapacidadHabitacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EstadoHabitacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EstadoHabitacion)
-        </dd>
-    </dl>
-    
-    <form asp-action="Eliminar" asp-controller="Habitacion" method="post">
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista</a>
+    <form asp-action="EliminarHabitacion" asp-controller="Habitacion" method="post">
+
+        <div class="form-group">
+            <label asp-for="CodHabitacion" class="control-label"></label>
+            <input asp-for="CodHabitacion" readonly="readonly" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="TipoHabitacion" class="control-label"></label>
+            <input asp-for="TipoHabitacion" readonly="readonly" class="form-control" />
+            <span asp-validation-for="TipoHabitacion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CapacidadHabitacion" class="control-label"></label>
+            <input asp-for="CapacidadHabitacion" readonly="readonly" class="form-control" />
+            <span asp-validation-for="CapacidadHabitacion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EstadoHabitacion" class="control-label"></label>
+            <input asp-for="EstadoHabitacion" readonly="readonly" class="form-control" />
+            <span asp-validation-for="EstadoHabitacion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+
     </form>
+    <div>
+        <br />
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
 </div>

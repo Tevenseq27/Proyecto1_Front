@@ -7,50 +7,50 @@
 <h1>Eliminación Cliente</h1>
 
 <h3>¿Seguro que desea eliminar este registro?</h3>
+
 <div>
     <h4>ClienteModel</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CedulaCliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CedulaCliente)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreCliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombreCliente)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido1Cliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido1Cliente)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido2Cliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido2Cliente)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TelefonoCliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TelefonoCliente)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CorreoCliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CorreoCliente)
-        </dd>
-    </dl>
-    
-    <form asp-action="Eliminar" asp-controller="Cliente" method="post">
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista</a>
+
+    <form asp-action="EliminarCliente" asp-controller="Cliente" method="post">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CedulaCliente" class="control-label"></label>
+            <input asp-for="CedulaCliente" readonly="readonly" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NombreCliente" class="control-label"></label>
+            <input asp-for="NombreCliente" readonly="readonly" class="form-control" />
+            <span asp-validation-for="NombreCliente" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Apellido1Cliente" class="control-label"></label>
+            <input asp-for="Apellido1Cliente" readonly="readonly" class="form-control" />
+            <span asp-validation-for="Apellido1Cliente" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Apellido2Cliente" class="control-label"></label>
+            <input asp-for="Apellido2Cliente" readonly="readonly" class="form-control" />
+            <span asp-validation-for="Apellido2Cliente" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TelefonoCliente" class="control-label"></label>
+            <input asp-for="TelefonoCliente" readonly="readonly" class="form-control" />
+            <span asp-validation-for="TelefonoCliente" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CorreoCliente" class="control-label"></label>
+            <input asp-for="CorreoCliente" readonly="readonly" class="form-control" />
+            <span asp-validation-for="CorreoCliente" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+
     </form>
+    <div>
+        <br />
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
 </div>

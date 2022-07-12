@@ -15,7 +15,7 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> Index()
         {
             GestorConexiones objconexion = new GestorConexiones();
-            List<ReservaModel> lstresultados = await objconexion.ListarReserva(new ReservaModel {IdReserva = short.MinValue});
+            List<ReservaModel> lstresultados = await objconexion.ListarReserva();
             return View(lstresultados);
         }
 
@@ -24,22 +24,23 @@ namespace Presentacion.Controllers
             return View();
         }
 
-        public async Task<IActionResult> EditaReserva(int Id)
+        public async Task<IActionResult> EditaReserva(ReservaModel ObjReserva)
         {
-            string id = ModelState.Values.Last().RawValue.ToString();
+            short id = ObjReserva.IdReserva;
+
             GestorConexiones objconexion = new GestorConexiones();
-            List<ReservaModel> lstresultados = await objconexion.ListarReserva(new ReservaModel {IdReserva = short.MinValue });
+            List<ReservaModel> lstresultados = await objconexion.ListarReserva();
             ReservaModel reserva = lstresultados.Find(x => x.IdReserva.Equals(id));
 
             return View(reserva);
         }
 
-        public async Task<IActionResult> Eliminar(int Id)
+        public async Task<IActionResult> Eliminar(ReservaModel ObjReserva)
         {
-            string id = ModelState.Values.Last().RawValue.ToString();
+            short id = ObjReserva.IdReserva;
 
             GestorConexiones objconexion = new GestorConexiones();
-            List<ReservaModel> lstresultados = await objconexion.ListarReserva(new ReservaModel {IdReserva = short.MinValue });
+            List<ReservaModel> lstresultados = await objconexion.ListarReserva();
             ReservaModel reserva = lstresultados.Find(x => x.IdReserva.Equals(id));
 
             return View(reserva);
@@ -61,8 +62,9 @@ namespace Presentacion.Controllers
             return RedirectToAction("Index");
         }
 
+        //ELIMINAR RESERVA
         [HttpPost]
-        public async Task<IActionResult> Eliminar(ReservaModel P_Modelo)
+        public async Task<IActionResult> EliminarReserva(ReservaModel P_Modelo)
         {
             GestorConexiones objconexion = new GestorConexiones();
             await objconexion.EliminarReserva(P_Modelo);

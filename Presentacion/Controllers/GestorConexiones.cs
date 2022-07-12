@@ -21,7 +21,7 @@ namespace Presentacion.Controllers
         private void GestorDeConexiones()
         {
             Cliente = new HttpClient();
-            Cliente.BaseAddress = new Uri("http://localhost:10060/");
+            Cliente.BaseAddress = new Uri("http://localhost:10060");
             Cliente.DefaultRequestHeaders.Accept.Clear();
             Cliente.DefaultRequestHeaders.Accept.Add
                 (
@@ -31,7 +31,7 @@ namespace Presentacion.Controllers
 
         //Métodos
         #region Cliente
-        public async Task<List<ClienteModel>> ListarCliente(ClienteModel P_Modelo)
+        public async Task<List<ClienteModel>> ListarCliente()
         {
             List<ClienteModel> lstresultados = new List<ClienteModel>();
             GestorDeConexiones();
@@ -65,6 +65,7 @@ namespace Presentacion.Controllers
 
         public async Task<bool> ModificarCliente(ClienteModel P_Modelo)
         {
+            GestorDeConexiones();
             string url = "api/Seguridad/ModificarCliente";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
@@ -117,7 +118,7 @@ namespace Presentacion.Controllers
         #endregion
         #region Reserva
         //MÉTODO PARA LISTAR RESERVA EN DB
-        public async Task<List<ReservaModel>> ListarReserva(ReservaModel P_Entidad)
+        public async Task<List<ReservaModel>> ListarReserva()
         {          
             List<ReservaModel> lstresultados = new List<ReservaModel>();
             GestorDeConexiones();
@@ -142,6 +143,7 @@ namespace Presentacion.Controllers
 
         public async Task<bool> EliminarReserva(ReservaModel P_Modelo)
         {
+            GestorDeConexiones();
             string url = "api/Seguridad/EliminarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
@@ -149,6 +151,7 @@ namespace Presentacion.Controllers
 
         public async Task<bool> ModificarReserva(ReservaModel P_Modelo)
         {
+            GestorDeConexiones();
             string url = "api/Seguridad/ModificarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
