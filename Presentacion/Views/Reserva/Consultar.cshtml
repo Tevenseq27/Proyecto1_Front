@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Presentacion.Models.HabitacionModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>SECCIÓN CONSULTAS DE RESERVAS</h1>
+<h1>ID del Cliente / Código Reserva</h1>
+<h2>Seleccione su opción:</h2>
+@using (Html.BeginForm("ValorSeleccionado", "Reserva", FormMethod.Post))
+{
+    <label>Cédula/Código</label>
+    @Html.DropDownList("ddlFiltro", (List<SelectListItem>)ViewBag.Listado)
+    <br />
+    <label>Digite el dato correspondiente:</label>
+    @Html.TextBox("TextBoxInfo","")
+    <br />
+    <input type="submit" value="Buscar" />
+    <br />
+}
+
+<div>
+    <br />
+    <a asp-action="Index">Lista de consultas</a>
+</div>
+

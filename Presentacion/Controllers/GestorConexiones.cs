@@ -74,7 +74,7 @@ namespace Presentacion.Controllers
         #region Habitación
 
         //MÉTODO PARA LISTAR HABITACIÓN EN DB
-        public async Task<List<HabitacionModel>> ListarHabitacion(HabitacionModel P_Entidad)
+        public async Task<List<HabitacionModel>> ListarHabitacion()
         {
             List<HabitacionModel> lstresultados = new List<HabitacionModel>();
             GestorDeConexiones();

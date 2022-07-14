@@ -13,7 +13,7 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> Index()
         {
             GestorConexiones objconexion = new GestorConexiones();
-            List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion(new HabitacionModel { CodHabitacion = short.MinValue });
+            List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion();
             return View(lstresultados);
         }
 
@@ -29,7 +29,7 @@ namespace Presentacion.Controllers
             short id = ObjHabitacion.CodHabitacion;
 
             GestorConexiones objconexion = new GestorConexiones();
-            List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion(new HabitacionModel { CodHabitacion = short.MinValue });
+            List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion();
             HabitacionModel habitacion = lstresultados.Find(x => x.CodHabitacion.Equals(id));
 
             return View(habitacion);
@@ -41,7 +41,7 @@ namespace Presentacion.Controllers
             short id = ObjHabitacion.CodHabitacion;
 
             GestorConexiones objconexion = new GestorConexiones();
-            List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion(new HabitacionModel { CodHabitacion = short.MinValue });
+            List<HabitacionModel> lstresultados = await objconexion.ListarHabitacion();
             HabitacionModel habitacion = lstresultados.Find(x => x.CodHabitacion.Equals(id));
 
             return View(habitacion);
