@@ -8,6 +8,7 @@ namespace Presentacion.Controllers
 {
     public class ClienteController : Controller
     {
+        //--------LISTAR CLIENTE--------
         public async Task<IActionResult> Index()
         {
             GestorConexiones objconexion = new GestorConexiones();

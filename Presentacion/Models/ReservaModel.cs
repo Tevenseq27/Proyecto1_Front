@@ -17,6 +17,7 @@ namespace Presentacion.Models
         public string CedulaCliente { get; set; }
         public short CodHabitacion { get; set; }
         public decimal PrecioHabitacion { get; set; }
+        public ClienteModel Cliente { get; set; }
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace Presentacion.Models
             CedulaCliente = string.Empty;
             CodHabitacion = 0;
             PrecioHabitacion = 0;
+            Cliente = null;
         }
         #endregion
     }
