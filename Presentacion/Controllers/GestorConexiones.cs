@@ -76,9 +76,12 @@ namespace Presentacion.Controllers
         //MÉTODO PARA LISTAR HABITACIÓN EN DB
         public async Task<List<HabitacionModel>> ListarHabitacion()
         {
-            List<HabitacionModel> lstresultados = new List<HabitacionModel>();
             GestorDeConexiones();
+
+            List<HabitacionModel> lstresultados = new List<HabitacionModel>();
+            
             string url = "api/Seguridad/ConsultarHabitacion";
+
             HttpResponseMessage resultado = await Cliente.GetAsync(url);
 
             if(resultado.IsSuccessStatusCode)

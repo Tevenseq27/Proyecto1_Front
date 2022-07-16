@@ -18,6 +18,7 @@ namespace Presentacion.Models
         public short CodHabitacion { get; set; }
         public decimal PrecioHabitacion { get; set; }
         public ClienteModel Cliente { get; set; }
+        public HabitacionModel Habitacion { get; set; }
 
         #endregion
 
