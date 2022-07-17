@@ -20,6 +20,9 @@ namespace Presentacion.Models
         public ClienteModel Cliente { get; set; }
         public HabitacionModel Habitacion { get; set; }
 
+        public DateTime FechaInicioRango { get; set; }
+        public DateTime FechaFinRango { get; set; }
+
         #endregion
 
         #region Constructor
@@ -28,14 +31,16 @@ namespace Presentacion.Models
         {
             IdReserva = short.MinValue;
             CodReserva = string.Empty;
-            FechaEntrada = DateTime.MinValue;
-            FechaSalida = DateTime.MinValue;
+            FechaEntrada = DateTime.Today;
+            FechaSalida = DateTime.Today;
             CantidadAdultos = 0;
             CantidadNinos = 0;
             CedulaCliente = string.Empty;
             CodHabitacion = 0;
             PrecioHabitacion = 0;
             Cliente = null;
+            FechaInicioRango = DateTime.MinValue;
+            FechaFinRango = DateTime.MinValue;
         }
         #endregion
     }

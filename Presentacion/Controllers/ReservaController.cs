@@ -31,8 +31,6 @@ namespace Presentacion.Controllers
             return View();
         }
 
-
-
         public async Task<IActionResult> CrearReserva()
         {
             GestorConexiones objconexion = new GestorConexiones();
@@ -285,6 +283,23 @@ namespace Presentacion.Controllers
             GestorConexiones objconexion = new GestorConexiones();
 
             List<ReservaModel> lstresultados = await objconexion.ListarReserva();
+
+            return View(lstresultados);
+        }
+
+        public async Task<IActionResult> Fechas(DateTime BuscarFechaInicio, DateTime BuscarFechaFin)
+        {
+            GestorConexiones objconexion = new GestorConexiones();
+
+            ReservaModel ObjReserva = new ReservaModel();
+
+            if (BuscarFechaInicio != DateTime.MinValue)
+                ObjReserva.FechaInicioRango = BuscarFechaInicio;
+
+            if (BuscarFechaFin != DateTime.MinValue)
+                ObjReserva.FechaFinRango = BuscarFechaFin;
+
+            List<ReservaModel> lstresultados = await objconexion.ListarFecha(ObjReserva);
 
             return View(lstresultados);
         }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Presentacion.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -158,6 +159,28 @@ namespace Presentacion.Controllers
             string url = "api/Seguridad/ModificarReserva";
             HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(url, P_Modelo);
             return resultado.IsSuccessStatusCode;
+        }
+
+        public async Task<List<ReservaModel>> ListarFecha(ReservaModel P_Modelo)
+        {
+            List<ReservaModel> lstresultados = new List<ReservaModel>();
+            GestorDeConexiones();
+            string url = "api/Seguridad/ConsultarReserva";
+            HttpResponseMessage resultado = await Cliente.GetAsync(url);
+
+            if (resultado.IsSuccessStatusCode)
+            {
+                var convertirAstring = await resultado.Content.ReadAsStringAsync();
+                lstresultados = JsonConvert.DeserializeObject<List<ReservaModel>>(convertirAstring);
+            }
+
+            if (P_Modelo.FechaInicioRango != DateTime.MinValue && P_Modelo.FechaFinRango != DateTime.MinValue)
+            {
+                lstresultados = lstresultados.Where(x => x.FechaEntrada >= P_Modelo.FechaInicioRango &&
+                                                         x.FechaSalida <= P_Modelo.FechaFinRango).ToList();
+            }
+
+            return lstresultados;
         }
         #endregion
         #endregion
