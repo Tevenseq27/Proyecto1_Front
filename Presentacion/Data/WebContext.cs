@@ -13,6 +13,6 @@ namespace FrontEndProyecto1.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
 
-        internal void SaveChanges() => throw new NotImplementedException();
+        //internal void SaveChanges() => throw new NotImplementedException();
     }
 }
