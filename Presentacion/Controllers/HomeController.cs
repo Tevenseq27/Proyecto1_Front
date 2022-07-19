@@ -14,18 +14,16 @@ namespace Presentacion.Controllers
 {
     public class HomeController : Controller
     {
-
-        public IActionResult Index()
-        {
-            return View();
-        }
         private RepositoryWeb repo;
 
         public HomeController(RepositoryWeb repo)
         {
             this.repo = repo;
         }
-
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Registro(string email, string password, string nombre, string apellidos, string tipo)
@@ -41,6 +39,7 @@ namespace Presentacion.Controllers
             }
             return View();
         }
+
 
         [AuthorizeUsers]
         public IActionResult PaginaProtegida()
