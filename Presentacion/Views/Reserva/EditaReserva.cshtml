@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "EditaReserva";
 }
-
+ 
 <h1>Editar Reserva</h1>
 
 <h4>Ingrese los datos:</h4>
@@ -11,6 +11,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Modificar" asp-controller="Reserva" method="post">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="IdReserva" class="control-label"></label>
@@ -41,16 +42,19 @@
                 <input asp-for="CantidadNinos" class="form-control" />
                 <span asp-validation-for="CantidadNinos" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="CedulaCliente" class="control-label"></label>
-                <input asp-for="CedulaCliente" class="form-control" />
-                <span asp-validation-for="CedulaCliente" class="text-danger"></span>
+                <br />
+                @Html.DropDownList("Cliente", (List<SelectListItem>)ViewBag.Clientes)
             </div>
+
             <div class="form-group">
                 <label asp-for="CodHabitacion" class="control-label"></label>
-                <input asp-for="CodHabitacion" class="form-control" />
-                <span asp-validation-for="CodHabitacion" class="text-danger"></span>
+                <br />
+                @Html.DropDownList("Habitacion", (List<SelectListItem>)ViewBag.Habitaciones)
             </div>
+
             <div class="form-group">
                 <label asp-for="PrecioHabitacion" class="control-label"></label>
                 <input asp-for="PrecioHabitacion" class="form-control" />

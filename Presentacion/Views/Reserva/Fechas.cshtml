@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Presentacion.Models.ReservaModel>
+
+@{
+    ViewData["Title"] = "AdminUsuarios";
+    ViewData["Title"] = "Fechas";
+
+}
+
+<h1>SECCIÓN CONSULTAS POR FECHAS</h1>
+<h1>FECHAS DE RESERVAS</h1>
+<h2>Seleccione su opción:</h2>
+
+
+
+<form asp-action="Fechas" asp-controller="Reserva" method="get">
+    <div>
+        <label>Fecha Inicio: </label>
+        <input type="date" name="BuscarFechaInicio" />
+        <br />
+        <label>Fecha Fin: </label>
+        <input type="date" name="BuscarFechaFin" />
+        <br />
+        <button type="submit" class="button">Filtrar</button>
+    </div>
+</form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdReserva)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodReserva)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaEntrada)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaSalida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CantidadAdultos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CantidadNinos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CedulaCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodHabitacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecioHabitacion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdReserva)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodReserva)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaEntrada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaSalida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidadAdultos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidadNinos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CedulaCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodHabitacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioHabitacion)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<div>
+    <br />
+    <a asp-action="Index">Lista de consultas</a>
+</div>
+
