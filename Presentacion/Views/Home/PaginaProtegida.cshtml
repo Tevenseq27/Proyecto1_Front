@@ -1,2 +1,41 @@
-﻿<h1 class="text-center mt-3">Hola @Context.User.Identity.Name, estas viendo una pagina protegida</h1>
-<h3 class="text-center"><a asp-controller="Manage" asp-action="LogOut">Cerrar sesión</a></h3>
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <h1 class="text-center mt-3">Hola @Context.User.Identity.Name, estas viendo una pagina protegida</h1>
+    <h3 class="text-center"><a asp-controller="Manage" asp-action="LogOut">Cerrar sesión</a></h3>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Presentación</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Gestionar Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Habitacion" asp-action="Index">Gestionar Habitaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reserva" asp-action="Index">Gestionar Reservas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reserva" asp-action="Consultar">Gestión Consultas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reserva" asp-action="Fechas">Consultas Fechas</a>
+                        </li>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>

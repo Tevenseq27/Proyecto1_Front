@@ -14,73 +14,50 @@ namespace Presentacion.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private RepositoryWeb repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(RepositoryWeb repo)
         {
-            _logger = logger;
+            this.repo = repo;
         }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Registro(string email, string password, string nombre, string apellidos, string tipo)
+        {
+            bool registrado = this.repo.RegistrarUsuario(email, password, nombre, apellidos, tipo);
+            if (registrado)
+            {
+                ViewData["MENSAJE"] = "Usuario registrado con exito";
+            }
+            else
+            {
+                ViewData["MENSAJE"] = "Error al registrar el usuario";
+            }
+            return View();
+        }
+
+
+        [AuthorizeUsers]
+        public IActionResult PaginaProtegida()
         {
             return View();
         }
-    }
 
-        namespace RegistroLogin.Controllers
-    {
-        public class HomeController : Controller
+        [AuthorizeUsers(Policy = "ADMINISTRADORES")]
+        public IActionResult AdminUsuarios()
         {
-            private RepositoryWeb repo;
+            List<Usuario> usuarios = this.repo.GetUsuarios();
+            return View(usuarios);
+        }
 
-            public HomeController(RepositoryWeb repo)
-            {
-                this.repo = repo;
-            }
-
-            //public IActionResult Index()
-            //{
-            //    return View();
-            //}
-
-            [HttpPost]
-            public IActionResult Registro(string email, string password, string nombre, string apellidos, string tipo)
-            {
-                bool registrado = this.repo.RegistrarUsuario(email, password, nombre, apellidos, tipo);
-                if (registrado)
-                {
-                    ViewData["MENSAJE"] = "Usuario registrado con exito";
-                }
-                else
-                {
-                    ViewData["MENSAJE"] = "Error al registrar el usuario";
-                }
-                return View();
-            }
-
-            [AuthorizeUsers]
-            public IActionResult PaginaProtegida()
-            {
-                return View();
-            }
-
-            [AuthorizeUsers(Policy = "ADMINISTRADORES")]
-            public IActionResult AdminUsuarios()
-            {
-                List<Usuario> usuarios = this.repo.GetUsuarios();
-                return View(usuarios);
-            }
-
-            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-            public IActionResult Error()
-            {
-                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            }
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-    }
+}
