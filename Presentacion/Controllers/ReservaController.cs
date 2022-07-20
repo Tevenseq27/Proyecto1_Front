@@ -1,15 +1,52 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FrontEndProyecto1;
+using FrontEndProyecto1.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Presentacion.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Presentacion.Controllers
 {
     public class ReservaController : Controller
     {
+
+        #region BITÁCORA
+
+        public async void RegistroBitacora(string desc)
+        {
+            Usuario usuario = new Usuario();
+
+            ClaimsIdentity identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
+            //TODO USUARIO PUEDE CONTENER UNA SERIE DE CARACTERISTICAS
+            //LLAMADA CLAIMS.  DICHAS CARACTERISTICAS PODEMOS ALMACENARLAS
+            //DENTRO DE USER PARA UTILIZARLAS A LO LARGO DE LA APP
+            Claim claimUserName = new Claim(ClaimTypes.Name, usuario.Nombre);
+            Claim claimRole = new Claim(ClaimTypes.Role, usuario.Tipo);
+            Claim claimIdUsuario = new Claim("IdUsuario", usuario.IdUsuario.ToString());
+            Claim claimEmail = new Claim("EmailUsuario", usuario.Email);
+
+            identity.AddClaim(claimUserName);
+            identity.AddClaim(claimRole);
+            identity.AddClaim(claimIdUsuario);
+            identity.AddClaim(claimEmail);
+            ClaimsPrincipal userPrincipal = new ClaimsPrincipal(identity);
+
+            CBitacora registro = new CBitacora();
+
+            ConexionApis objConexion = new ConexionApis();
+            registro.Id_Usuario = usuario.IdUsuario.ToString();
+            registro.nombre_usuario = identity.Name.ToString();
+            registro.descripcion = desc;
+            await objConexion.RegistroBitacora(registro);
+        }
+
+        #endregion
+
 
         private List<SelectListItem> ObtenerOpciones()
         {
@@ -27,6 +64,8 @@ namespace Presentacion.Controllers
 
         public IActionResult Consultar()
         {
+            string desc = "Consulta de reservas";
+            RegistroBitacora(desc);
             ViewBag.Listado = ObtenerOpciones();
             return View();
         }
@@ -71,6 +110,9 @@ namespace Presentacion.Controllers
 
             ViewBag.Clientes = clientList;
             ViewBag.Habitaciones = habList;
+
+            string desc = "Creación de reservas";
+            RegistroBitacora(desc);
 
             return View();
         }
@@ -124,6 +166,9 @@ namespace Presentacion.Controllers
             ViewBag.Clientes = clientList;
             ViewBag.Habitaciones = habList;
 
+            string desc = "Edición de reservas";
+            RegistroBitacora(desc);
+
             return View(Reserva);
         }
 
@@ -134,6 +179,9 @@ namespace Presentacion.Controllers
             GestorConexiones objconexion = new GestorConexiones();
             List<ReservaModel> lstresultados = await objconexion.ListarReserva();
             ReservaModel reserva = lstresultados.Find(x => x.IdReserva.Equals(id));
+
+            string desc = "Eliminación de reservas";
+            RegistroBitacora(desc);
 
             return View(reserva);
         }

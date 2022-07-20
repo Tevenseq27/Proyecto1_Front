@@ -1,9 +1,9 @@
 ﻿@if(Context.User.Identity.IsAuthenticated == false)
 {
-    <a class="nav-link text-dark" asp-controller="Manage" asp-action="LogIn">LogIn</a>
+    <a class="nav-link text-dark" asp-controller="Manage" asp-action="LogIn">INICIAR SESIÓN</a>
 }
 else
 {
-<span>Hola @Context.User.Identity.Name </span>
-<a class="nav-link text-dark" asp-controller="Manage" asp-action="LogOut">Cerrar sesión</a>
+<span>HOLA @Context.User.Identity.Name</span>
+<a class="nav-link text-dark" asp-controller="Manage" asp-action="LogOut">CERRAR SESIÓN</a>
 }
